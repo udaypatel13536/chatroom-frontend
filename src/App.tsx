@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-
+import {Backend_URL} from '../config'
 import './App.css'
 interface Messagespaylod {
   username : string
@@ -19,7 +19,7 @@ function App() {
   const usernameRef= useRef<HTMLInputElement>(null)
   const roomNameRef= useRef<HTMLInputElement>(null)
   useEffect(()=>{
-    const ws = new WebSocket ("ws://localhost:8080")
+    const ws = new WebSocket (Backend_URL)
       setSocket(ws)
       ws.onopen=()=>{
         if(Roomname.length !==0 && username){
